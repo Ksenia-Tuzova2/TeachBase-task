@@ -1,18 +1,18 @@
-import style from './input.module.scss'
+import style from './input.module.css'
 
 type InputPropsType = {
     inputValue: string,
     inputName: string,
-    placeholder:string,
+    placeholder: string,
     inputValueChangeHandler: any,
-    tabIndex:number,
+    tabIndex: number,
 }
 
 export const Input: React.FC<InputPropsType> = (
     {
-         inputValue,
-         inputName,
-         placeholder,
+        inputValue,
+        inputName,
+        placeholder,
         inputValueChangeHandler,
         tabIndex,
     }

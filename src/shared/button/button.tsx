@@ -1,4 +1,4 @@
-import btnStyle from './btn.module.scss'
+import btnStyle from './button.module.css'
 
 type ButtonPropsType = {
     buttonName: string,
@@ -15,8 +15,8 @@ export const Button: React.FC<ButtonPropsType> = (
         <button
             className={btnStyle.btn}
             name={buttonName}
-            onClick={()=>onClickHandler }
-            >
+            onClick={() => onClickHandler}
+        >
             {buttonName}
         </button>
 

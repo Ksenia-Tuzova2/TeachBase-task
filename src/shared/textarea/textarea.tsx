@@ -1,9 +1,9 @@
-import style from './textarea.module.scss'
+import style from './textarea.module.css'
 
 type TextareaPropsType = {
     textareaValue: string,
     textareaName: string,
-    placeholder:string,
+    placeholder: string,
     textareaValueChangeHandler: any
 }
 

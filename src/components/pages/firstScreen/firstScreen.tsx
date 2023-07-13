@@ -1,15 +1,14 @@
+import { Button } from '../../../shared/button/button'
 import { Input } from '../../../shared/input/input'
-import style from './firstScreen.module.scss'
+import style from './firstScreen.module.css'
 
 type FirstScreenPropsType = {
-  authorsNameInputValue: string,
-  articleTitleInputValue: string,
+
 }
 
 export const FirstScreen: React.FC<FirstScreenPropsType> = (
   {
-    authorsNameInputValue,
-    articleTitleInputValue,
+  
   }) => {
 
   let upateAuthorsNameInputValueChangeHandler = (text: string) => {
@@ -25,15 +24,17 @@ export const FirstScreen: React.FC<FirstScreenPropsType> = (
       <Input
         inputName={'author`s name'}
         placeholder={'Author`s name'}
-        inputValue={authorsNameInputValue}
+        inputValue={''}
         inputValueChangeHandler={upateAuthorsNameInputValueChangeHandler}
          tabIndex={1}      />
       <Input
         inputName={'article title'}
         placeholder={'Article title'}
-        inputValue={articleTitleInputValue}
+        inputValue={''}
         inputValueChangeHandler={articleTitleInputValueChangeHandler} 
         tabIndex={2}      />
+        <Button buttonName={'Далее'}
+         onClickHandler={undefined}/>
     </div>
 
   )

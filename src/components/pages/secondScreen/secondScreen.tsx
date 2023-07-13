@@ -1,3 +1,4 @@
+import { Button } from "../../../shared/button/button";
 import { Textarea } from "../../../shared/textarea/textarea";
 
 export  function SecondScreen() {
@@ -8,6 +9,9 @@ export  function SecondScreen() {
         textareaName={""} 
         placeholder={""} 
         textareaValueChangeHandler={undefined}/>
+        <Button 
+        buttonName={"Далее"} 
+        onClickHandler={undefined}/>
       </div>
     );
   }

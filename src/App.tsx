@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import { PageSelection } from './components/pageSelection/pageSelection';
+import { Sidebar } from './components/sideBar/sideBar';
+import { FirstScreen } from './components/pages/firstScreen/firstScreen';
 
 function App() {
   return (
     <div className="App">
-      
-<PageSelection/>
+      <div className="App__innerContainer"></div>
+      <FirstScreen />
+      <Sidebar />
     </div>
   );
 }
