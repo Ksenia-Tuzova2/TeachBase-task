@@ -1,3 +1,14 @@
-.container{
-  display: flex;
+.btn{
+  color: #F9FBFC;
+font-family: Montserrat;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+  height: 73px;
+  min-width: 306px;
+  padding: 12px 12px;
+  border-radius: 15px;
+  border: none;
 }

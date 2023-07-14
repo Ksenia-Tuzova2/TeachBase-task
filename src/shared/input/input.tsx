@@ -18,8 +18,10 @@ export const Input: React.FC<InputPropsType> = (
     }
 ) => {
     return (
+        <div className={style.input}>
+            <div className={style.input__name}>{inputName}</div>
         <input
-            className={style.input}
+            className={style.input__item}
             type="text"
             name={inputName}
             placeholder={placeholder}
@@ -27,6 +29,7 @@ export const Input: React.FC<InputPropsType> = (
             tabIndex={tabIndex}
             onChange={(e) => inputValueChangeHandler(e.currentTarget.value)}
         />
+        </div>
     )
 }
 

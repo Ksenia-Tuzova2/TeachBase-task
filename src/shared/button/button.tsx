@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonPropsType> = (
     }
 ) => {
     return (
-
+//как задать цвета в условном ветвлвелнии?
         <button
             className={btnStyle.btn}
             name={buttonName}

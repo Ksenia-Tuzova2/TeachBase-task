@@ -1,3 +1,5 @@
-.container{
+.firstScreen{
+
   display: flex;
+  flex-direction: column;
 }

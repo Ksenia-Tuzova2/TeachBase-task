@@ -20,7 +20,7 @@ export const FirstScreen: React.FC<FirstScreenPropsType> = (
   }
 
   return (
-    <div className={style.container}>
+    <div className={style.firstScreen}>
       <Input
         inputName={'author`s name'}
         placeholder={'Author`s name'}

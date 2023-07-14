@@ -1,3 +1,31 @@
 .input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
 
+}
+
+.input__item {
+    width: 878px;
+    height: 73px;
+    flex-shrink: 0;
+
+    color: #F9FBFC;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 700;
+border: none;
+padding:  12px 20px;
+
+    border-radius: 15px;
+    background: #65C497;
+}
+
+.input__name{
+    color: #000;
+font-family: Montserrat;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
