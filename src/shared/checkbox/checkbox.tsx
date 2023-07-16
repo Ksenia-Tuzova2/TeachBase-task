@@ -1,34 +1,45 @@
 import style from './checkbox.module.css'
 
 type CheckboxPropsType = {
+    onClickHadler: (checked:boolean) => void
     id: string,
     name: string,
-    value: string,
     labelTitle: string,
     labelFor: string,
-    checked:boolean,
+    checked: boolean,
+    colorLabel: string,
 }
 
 export const Checkbox: React.FC<CheckboxPropsType> = (
     {
         id,
         name,
-        value,
         labelTitle,
         labelFor,
         checked,
+        colorLabel,
+        onClickHadler,
     }
 ) => {
+
     return (
-        <div className="checkbox__container">
-            <input 
+        <div className={style.checkbox}>
+            <input
                 type="checkbox"
                 id={id}
                 name={name}
-                value={value}
-                checked={checked||true}
+                checked={checked}
+                onChange={(e)=>onClickHadler((e.currentTarget.checked))}
+                className={style.checkbox__item}
+               
+                value={labelFor}
             />
-            <label htmlFor={labelFor}>{labelTitle}</label>
+            <label
+                htmlFor={labelFor}
+                className={style.lablel}
+                style={{ color: colorLabel }}>
+                {labelTitle}
+            </label>
         </div>
     )
 }

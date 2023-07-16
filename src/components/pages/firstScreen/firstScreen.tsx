@@ -1,41 +1,63 @@
 import { Button } from '../../../shared/button/button'
 import { Input } from '../../../shared/input/input'
 import style from './firstScreen.module.css'
+import { StoreContext } from '../../../store/contex'
+import { useContext } from 'react'
+import { StateType } from '../../../store/state'
 
-type FirstScreenPropsType = {
+type FirstScreenPropsType = {}
 
-}
+export const FirstScreen: React.FC<FirstScreenPropsType> = () => {
 
-export const FirstScreen: React.FC<FirstScreenPropsType> = (
-  {
-  
-  }) => {
+  const { state, setState } = useContext(StoreContext)
+
+
 
   let upateAuthorsNameInputValueChangeHandler = (text: string) => {
-    // upateAuthorsNameInputValue(text)
+    const newState = { author: text } as StateType
+    setState({ ...state, ...newState })
   }
 
-  let articleTitleInputValueChangeHandler = (text: string) => {
-    // articleTitleInputValue(text)
+  let updateTitleInputValueChangeHandler = (text: string) => {
+    const newState = { title: text } as StateType
+    setState({ ...state, ...newState })
   }
+
+  let clickButtonHandler = () => {
+    const newState = { step: 2 } as StateType
+    setState({ ...state, ...newState })
+  }
+
+
 
   return (
     <div className={style.firstScreen}>
-      <Input
-        inputName={'author`s name'}
-        placeholder={'Author`s name'}
-        inputValue={''}
-        inputValueChangeHandler={upateAuthorsNameInputValueChangeHandler}
-         tabIndex={1}      />
-      <Input
-        inputName={'article title'}
-        placeholder={'Article title'}
-        inputValue={''}
-        inputValueChangeHandler={articleTitleInputValueChangeHandler} 
-        tabIndex={2}      />
+      <div className={style.firstScreen__item}>
+        <Input
+          label={'Имя автора'}
+          inputName={'author`s name'}
+          placeholder={'Имя автора'}
+          inputValue={state?.author}
+          inputValueChangeHandler={(text: string) => upateAuthorsNameInputValueChangeHandler(text)}
+          tabIndex={1}
+          colorLabel={`${state.theme ? 'white' : 'black'}`} />
+      </div>
+      <div className={style.firstScreen__item}>
+        <Input
+          colorLabel={`${state.theme ? 'white' : 'black'}`}
+          label={'Название статьи'}
+          inputName={'article title'}
+          placeholder={'Название статьи'}
+          inputValue={state?.title}
+          inputValueChangeHandler={
+            (text: string) => updateTitleInputValueChangeHandler(text)}
+          tabIndex={2} />
+      </div>
+      <div className={style.firstScreen__item}>
         <Button buttonName={'Далее'}
-         onClickHandler={undefined}/>
+          onClickHandler={() => clickButtonHandler()}
+        />
+      </div>
     </div>
-
   )
 }

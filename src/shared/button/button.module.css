@@ -1,10 +1,10 @@
-.btn{
-  color: #F9FBFC;
-font-family: Montserrat;
-font-size: 30px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
 
   height: 73px;
   min-width: 306px;
@@ -12,3 +12,18 @@ line-height: normal;
   border-radius: 15px;
   border: none;
 }
+
+.button__icon{
+margin: 0 5px 0 0;
+}
+
+.smallFont{
+font-size: 30px;
+font-weight: 500;
+height: 73px;
+min-width: 306px;
+padding: 12px 12px;
+border-radius: 15px;
+border: none;
+}
+

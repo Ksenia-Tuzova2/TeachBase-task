@@ -1,0 +1,32 @@
+.header{
+  width: 100vw;
+  height: 83px;
+  border-radius: 0px 0px 20px 0px;
+  border: 5px solid #65C497;
+  position: relative;
+ 
+  display: flex;
+  align-items: start;
+
+}
+
+.header__step{
+margin: 0 24px;
+font-size: 48px;
+font-weight: 700;
+z-index: 1;
+align-self: center;
+}
+
+.header__number{
+  color: #8484F7;
+}
+
+.header__progressBar{
+  width: 33.33%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #65C497;
+}

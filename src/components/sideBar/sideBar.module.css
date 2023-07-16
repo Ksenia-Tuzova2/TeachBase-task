@@ -1,13 +1,19 @@
 .sidebar {
   width: 376px;
-  height: 100%;
+  height: 100vh;
   flex-shrink: 0;
   background: #5EA8FF;
   text-align: left;
-  padding: 35px;
+  padding: 0 35px;
+}
+
+.sidebar__darktheme {
+  background: #2A3443;
+  border-right: 5px #65C497 solid;
 }
 
 .sidebar__container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,16 +23,31 @@
 
 .menu {
   padding: 0;
+  margin: 35px 0;
   list-style: none;
   font-weight: 500;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 35px;
 }
 
-.menu__item__active{
+.menu__item__active {
   font-weight: 700;
-line-height: normal;
-text-decoration-line: underline;
+  line-height: normal;
+  text-decoration-line: underline;
+  white-space: none;
+  pointer-events: none;
+}
+
+li {
+  margin: 0 0 15px 0;
+}
+
+li:last-child {
+  margin: 0;
+}
+
+
+.sideBar_mainPart {
+  flex-grow: 1;
 }

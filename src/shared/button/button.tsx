@@ -1,23 +1,33 @@
-import btnStyle from './button.module.css'
+import style from './button.module.css'
+import mesSvg from './icons/mes.svg'
 
 type ButtonPropsType = {
     buttonName: string,
-    onClickHandler: any
+    onClickHandler: () => void,
+    background?: string,
+    smallFont?: boolean,
+    mesIcon?: boolean,
 }
 
 export const Button: React.FC<ButtonPropsType> = (
     { buttonName,
-        onClickHandler
+        onClickHandler,
+        background = "#65C497",
+        smallFont = false,
+        mesIcon=false
     }
 ) => {
+          
+    let messageIcon=  mesIcon? <img className={style.button__icon} src={mesSvg} alt="" />:''
+
     return (
-//как задать цвета в условном ветвлвелнии?
         <button
-            className={btnStyle.btn}
+            className={`${style.button} ${smallFont ? style.smallFont : ''}`}
             name={buttonName}
-            onClick={() => onClickHandler}
-        >
-            {buttonName}
+            onClick={() => onClickHandler()}
+            style={{ background: background }} >
+             {messageIcon}
+            <span>{buttonName}</span>
         </button>
 
     )

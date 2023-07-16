@@ -1,32 +1,59 @@
+import { useContext, useState } from 'react'
 import { Button } from '../../shared/button/button'
 import { Logo } from '../../shared/logo/logo'
 import style from './sideBar.module.css'
+import { ToggleTheme } from '../../shared/toggleTheme/toggleTheme'
+import { StoreContext } from '../../store/contex'
+import { StateType, StepType } from '../../store/state'
 
-type SidebarPropsType = {
 
-}
+export const Sidebar: React.FC = () => {
 
-export const Sidebar: React.FC<SidebarPropsType> = (
-    {
+    const { state, setState } = useContext(StoreContext)
+
+    const updateStepOnClickHandler = (step: StepType) => {
+        const newState = { step: step } as StateType
+        setState({ ...state, ...newState })
+    }
+
+    let clickButtonHandler = () => {
+
+        const newState = { step: 1 } as StateType
+        setState({ ...state, ...newState })
 
     }
-) => {
+
     return (
-        <div className={style.sidebar}>
-             <div className={style.sidebar__container}>
-                <Logo/>
-                <Button buttonName={'Cоздать статью'} 
-                onClickHandler={undefined}/>
-            <ul className={style.menu}>
-                <li className={style.menu__item}
-                 role="none"
-                 >Имя автора <br/> и название статьи</li>
-                <li className={style.menu__item} 
-                role="none">Написать текст статьи</li>
-                <li className={style.menu__item} 
-                role="none">Отправить статью/<br/>
-                создать черновик</li>
-            </ul>
+        <div className={`${style.sidebar} ${state.theme ? style.sidebar__darktheme : ''}`}>
+            <div className={style.sidebar__container}>
+                <div className={style.sideBar_mainPart}>
+                    <Logo />
+                    <Button
+                        mesIcon={true}
+                        smallFont={true}
+                        buttonName={'Cоздать статью'}
+                        onClickHandler={() => clickButtonHandler()}
+                        background={`${state.theme ? '#3E4757' : '#3A95FF'}`} />
+
+                    <ul className={style.menu}>
+                        <li
+                            className={`${style.menu__item} ${state.step === 1 ? style.menu__item__active : ''}`}
+                            role="none"
+                            onClick={() => updateStepOnClickHandler(1)}
+                        > Имя автора<br /> и название статьи</li>
+                        <li
+                            className={`${style.menu__item} ${state.step === 2 ? style.menu__item__active : ''}`}
+                            role="none"
+                            onClick={() => updateStepOnClickHandler(2)}
+                        >Написать текст статьи</li>
+                        <li
+                            className={`${style.menu__item} ${state.step === 3 ? style.menu__item__active : ''}`}
+                            role="none"
+                            onClick={() => updateStepOnClickHandler(3)}
+                        >Отправить статью</li>
+                    </ul>
+                </div>
+                <ToggleTheme />
             </div>
         </div>
     )

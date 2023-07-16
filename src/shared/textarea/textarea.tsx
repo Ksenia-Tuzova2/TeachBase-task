@@ -4,7 +4,7 @@ type TextareaPropsType = {
     textareaValue: string,
     textareaName: string,
     placeholder: string,
-    textareaValueChangeHandler: any
+    textareaValueChangeHandler: (text:string)=>void,
 }
 
 export const Textarea: React.FC<TextareaPropsType> = (

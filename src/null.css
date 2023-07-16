@@ -1,3 +1,17 @@
+/* Выставляем основные настройки по-умолчанию для body */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+
+  /* запрещаем самовольное увелечение шрифтов на смартфонах */
+  size-adjust: 100%;
+}
 
 
 /* Указываем box sizing */
@@ -6,7 +20,10 @@
 *::after {
   box-sizing: border-box;
 }
-nav, footer, header{
+
+nav,
+footer,
+header {
   display: block;
 }
 
@@ -26,24 +43,10 @@ p,
 ul,
 ol,
 li,
-figure
- {
+figure {
   margin: 0;
 }
 
-/* Выставляем основные настройки по-умолчанию для body */
-html, body {
- height: 100%;
- width: 100%;
- font-size: 100%;
- line-height: 1;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-
-  /* запрещаем самовольное увелечение шрифтов на смартфонах */
-  size-adjust: 100%;
-}
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
 ul[class],
@@ -71,10 +74,15 @@ select {
   border: none;
   font: inherit;
 }
+textarea:focus,
+ input:focus{
+  outline: none;
+}
 
-a:hover{
+a:hover {
   text-decoration: none;
 }
+
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -84,12 +92,12 @@ a:hover{
     scroll-behavior: auto !important;
   }
 }
-a{
+
+a {
   text-decoration: none;
   color: black;
 }
-#root{
+
+#root {
   height: 100%;
 }
-
-

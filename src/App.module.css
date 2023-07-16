@@ -1,0 +1,41 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+
+  .app {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    color: #F9FBFC;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+
+  }
+
+  .app__darkTheme {
+    background: #2A3443;
+  }
+
+  .app__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .app__mainPart {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 6%;
+    ;
+  }
+
+  .app__screenPart {
+    padding: 25px;
+    height: 100%;
+    width: 1400px;
+    position: relative;
+  }
