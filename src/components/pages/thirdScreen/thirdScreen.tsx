@@ -4,14 +4,12 @@ import { Checkbox } from "../../../shared/checkbox/checkbox";
 import { StoreContext } from "../../../store/contex";
 import style from './thirdScreen.module.css'
 import { IsDraftType, StateType, initialState } from "../../../store/state";
-import { log } from "console";
 
 export function ThirdScreen() {
 
   const { state, setState } = useContext(StoreContext)
 
   let onClickCheckboxhandler = (isDraft:IsDraftType) => {
-    console.log('s')
     const newState = { isDraft: !state.isDraft } as StateType
     setState({ ...state, ...newState })
   }

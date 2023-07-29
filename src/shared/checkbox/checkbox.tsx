@@ -31,7 +31,6 @@ export const Checkbox: React.FC<CheckboxPropsType> = (
                 checked={checked}
                 onChange={(e)=>onClickHadler((e.currentTarget.checked))}
                 className={style.checkbox__item}
-               
                 value={labelFor}
             />
             <label
