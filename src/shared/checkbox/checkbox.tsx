@@ -1,4 +1,4 @@
-import style from './checkbox.module.css'
+import style from "./checkbox.module.css";
 
 type CheckboxPropsType = {
     onClickHadler: (checked:boolean) => void
@@ -19,7 +19,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = (
         checked,
         colorLabel,
         onClickHadler,
-    }
+    },
 ) => {
 
     return (
@@ -40,6 +40,6 @@ export const Checkbox: React.FC<CheckboxPropsType> = (
                 {labelTitle}
             </label>
         </div>
-    )
-}
+    );
+};
 

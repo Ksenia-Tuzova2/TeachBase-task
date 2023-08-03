@@ -15,11 +15,11 @@ export type StateType = {
 }
 
 
-export let initialState: StateType = {
+export const initialState: StateType = {
     theme: false,
     step: 1,
-    author: '',
-    title: '',
-    text: '',
+    author: "",
+    title: "",
+    text: "",
     isDraft: true,
-}
+};

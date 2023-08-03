@@ -1,5 +1,6 @@
-import { StepType } from '../../store/state'
-import style from './header.module.css'
+import { StepType } from "../../store/state";
+
+import style from "./header.module.css";
 
 
 type HeaderPropsType = {
@@ -20,5 +21,5 @@ export const Header: React.FC<HeaderPropsType> = (
       </div>
     </header>
 
-  )
-}
+  );
+};

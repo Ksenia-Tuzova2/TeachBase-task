@@ -1,5 +1,6 @@
-import { TextType } from '../../store/state'
-import style from './input.module.css'
+import { TextType } from "../../store/state";
+
+import style from "./input.module.css";
 
 type InputPropsType = {
     label: string,
@@ -20,7 +21,7 @@ export const Input: React.FC<InputPropsType> = (
         placeholder,
         inputValueChangeHandler,
         tabIndex,
-    }
+    },
 ) => {
     return (
         <div className={style.input}>
@@ -38,6 +39,6 @@ export const Input: React.FC<InputPropsType> = (
                 onChange={(e) => inputValueChangeHandler(e.currentTarget.value)}
             />
         </div>
-    )
-}
+    );
+};
 

@@ -1,22 +1,24 @@
-import style from './toggleTheme.module.css'
-import sun from './icons/ph_sun.svg'
-import moon from './icons/solar_moon-line-duotone.svg'
-import on from './icons/uit_toggle-on-1.svg'
-import off from './icons/uit_toggle-off.svg'
-import { StoreContext } from '../../store/contex'
-import { useContext } from 'react'
-import { StateType } from '../../store/state'
+import { useContext } from "react";
+
+import { StoreContext } from "../../store/contex";
+import { StateType } from "../../store/state";
+
+import style from "./toggleTheme.module.css";
+import sun from "./icons/ph_sun.svg";
+import moon from "./icons/solar_moon-line-duotone.svg";
+import on from "./icons/uit_toggle-on-1.svg";
+import off from "./icons/uit_toggle-off.svg";
 
 type ToggleThemePropsType = {}
 
 export const ToggleTheme: React.FC<ToggleThemePropsType> = () => {
 
-    const { state, setState } = useContext(StoreContext)
+    const { state, setState } = useContext(StoreContext);
 
-    let onClickHandler = () => {
-        const newState = { theme: !state.theme } as StateType
-        setState({ ...state, ...newState })
-    }
+    const onClickHandler = () => {
+        const newState = { theme: !state.theme } as StateType;
+        setState({ ...state, ...newState });
+    };
 
     return (
         <div className={style.toggleTheme}>
@@ -29,6 +31,6 @@ export const ToggleTheme: React.FC<ToggleThemePropsType> = () => {
             </div>
             <img src={moon} alt="" />
         </div>
-    )
-}
+    );
+};
 

@@ -1,4 +1,5 @@
 import { createContext } from "react";
+
 import { StateType } from "./state";
 
 
@@ -7,6 +8,6 @@ export type StoreContextType = {
     setState: (newState: StateType) => void
   }
 
-export const StoreContext = createContext<StoreContextType>({} as StoreContextType)
+export const StoreContext = createContext<StoreContextType>({} as StoreContextType);
 
 

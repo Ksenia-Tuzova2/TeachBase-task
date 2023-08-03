@@ -1,4 +1,4 @@
-import style from './textarea.module.css'
+import style from "./textarea.module.css";
 
 type TextareaPropsType = {
     textareaValue: string,
@@ -13,7 +13,7 @@ export const Textarea: React.FC<TextareaPropsType> = (
         textareaName,
         placeholder,
         textareaValueChangeHandler,
-    }
+    },
 ) => {
     return (
         <textarea
@@ -23,6 +23,6 @@ export const Textarea: React.FC<TextareaPropsType> = (
             value={textareaValue}
             onChange={(e) => textareaValueChangeHandler(e.currentTarget.value)}
         />
-    )
-}
+    );
+};
 

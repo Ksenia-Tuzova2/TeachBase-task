@@ -1,5 +1,5 @@
-import svg from './logoIcon/logo.svg'
-import style from './logo.module.css'
+import svg from "./logoIcon/logo.svg";
+import style from "./logo.module.css";
 
 
 export const Logo: React.FC = ()=>{
@@ -7,6 +7,6 @@ export const Logo: React.FC = ()=>{
         <div className={style.logo}>
         <img className={style.logo__img} src={svg} alt='#'></img>
     </div>
-    )
-}
+    );
+};
 
