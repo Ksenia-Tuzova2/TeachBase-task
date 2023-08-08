@@ -1,8 +1,6 @@
-import { useContext } from "react";
-
+import { useState } from "react";
 import { Button } from "../../../shared/button/button";
 import { Input } from "../../../shared/input/input";
-import { StoreContext } from "../../../store/contex";
 import { StateType } from "../../../store/state";
 
 import style from "./firstScreen.module.css";
@@ -10,21 +8,23 @@ import style from "./firstScreen.module.css";
 type FirstScreenPropsType = {};
 
 export const FirstScreen: React.FC<FirstScreenPropsType> = () => {
-  const { state, setState } = useContext(StoreContext);
+  const [ stateAuthorsNameInputValue,
+     setStateAuthorsNameInputValue  ]= useState('');
 
   const upateAuthorsNameInputValueChangeHandler = (text: string) => {
     const newState = { author: text } as StateType;
-    setState({ ...state, ...newState });
+    setStateAuthorsNameInputValue({ ...stateAuthorsNameInputValue,
+       ...newState });
   };
 
   const updateTitleInputValueChangeHandler = (text: string) => {
     const newState = { title: text } as StateType;
-    setState({ ...state, ...newState });
+    setStateAuthorsNameInputValue({ ...state, ...newState });
   };
 
   const clickButtonHandler = () => {
     const newState = { step: 2 } as StateType;
-    setState({ ...state, ...newState });
+    setStateAuthorsNameInputValue({ ...state, ...newState });
   };
 
   return (
@@ -34,7 +34,7 @@ export const FirstScreen: React.FC<FirstScreenPropsType> = () => {
           label={"Имя автора"}
           inputName={"author`s name"}
           placeholder={"Имя автора"}
-          inputValue={state?.author}
+          inputValue={state.author}
           inputValueChangeHandler={(text: string) =>
             upateAuthorsNameInputValueChangeHandler(text)
           }
