@@ -1,129 +1,81 @@
+import "./null.css";
+import { useReducer } from "react";
 
-export type FilterType = "all" | "active" | "completed";
-export type TodolistsType = {
-  id: string;
-  title: string;
-  filter: FilterType;
-};
-export type TasksStateType = {
-  [key: string]: Array<TaskType>;
-};
+import { Sidebar } from "./components/sideBar/sideBar";
+import { FirstScreen } from "./components/pages/firstScreen/firstScreen";
+import { Header } from "./components/header/header";
+import { SecondScreen } from "./components/pages/secondScreen/secondScreen";
+import { ThirdScreen } from "./components/pages/thirdScreen/thirdScreen";
 
-function AppWithReducers() {
-  const todolistID1: string = v1();
-  const todolistID2: string = v1();
+import style from "./App.module.css";
+import { IsDraftType, initialState } from "./store/state";
+import { ChangeThemeAC, SendIsDraftAC, SendTextAC, SendTitleAC, 
+  UpdateAuthorAC, 
+  UpdateStepAC, 
+  reducer } from "./store/reducer";
 
-  const [todolists, dispatchToTodoLists] = useReducer(todoListReducer, [
-    { id: todolistID1, title: "What to learn", filter: "all" },
-    { id: todolistID2, title: "What to buy", filter: "all" },
-  ]);
+export type AppPropsType = {}
 
+export const App: React.FC<AppPropsType> = () => {
 
-  function removeTask(id: string, todolistId: string) {
-    const action = removeTaskAC(id, todolistId);
-    dispatchToTasks(action);
+  const [state, dispatch]=useReducer(reducer, initialState);
+
+  function sendText(text:string){
+    dispatch(SendTextAC(text));
   }
 
-  function addTask(title: string, todolistId: string) {
-    const action = addTaskAC(title, todolistId);
-    dispatchToTasks(action);
+  function updateStep(step:number){
+    dispatch(UpdateStepAC(step));
   }
 
-  function changeTaskStatus(isDone: boolean, id: string, todolistId: string) {
-    const action = changeTaskStatusAC(isDone, id, todolistId);
-    dispatchToTasks(action);
+  function updateAuthor(author:string){
+    dispatch(UpdateAuthorAC(author));
   }
 
-  function changeTasksTitle(title: string, id: string, todolistId: string) {
-    const action = changeTaskTitleAC(title, id, todolistId);
-    dispatchToTasks(action);
+  function sendIsDraft(isDraft: IsDraftType){
+    dispatch(SendIsDraftAC(isDraft));
   }
 
-  function changeFilter(value: FilterType, todolistId: string) {
-    const action = ChangeTodoFilterAC(value, todolistId);
-    dispatchToTodoLists(action);
+  function sendTitle(title: string){
+    dispatch(SendTitleAC(title));
   }
 
-  function removeTodoList(todolistId: string) {
-    const action = RemoveTodolistAC(todolistId);
-    dispatchToTodoLists(action);
-    dispatchToTasks(action);
+  function changeTheme(theme:boolean){
+    dispatch(ChangeThemeAC(theme));
   }
 
-  function addTodo(title: string) {
-    const action = AddTodoListAC(title);
-    //пропихнем в массив тудушек
-    dispatchToTodoLists(action);
-    //пропихнем в массив тасок
-    dispatchToTasks(action);
-  }
 
-  function changeTodoTitle(title: string, todolistId: string) {
-    const action = ChangeTodoTitleAC(title, todolistId);
-    dispatchToTodoLists(action);
-  }
-
-  return (
-    <div className="App">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}>
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <div className="app__container-foe-view-part">
-        <Container fixed>
-          <Grid container style={{ padding: "30px" }}>
-            <AddItemForm addItem={addTodo} />
-          </Grid>
-          <Grid container>
-            {todolists.map((t) => {
-              //здесь будем хранить отфильтрованные приколы
-              let tasksForTodo = tasks[t.id];
-
-              if (t.filter === "active") {
-                tasksForTodo = tasksForTodo.filter((t) => t.isDone === false);
-              }
-
-              if (t.filter === "completed") {
-                tasksForTodo = tasksForTodo.filter((t) => t.isDone === true);
-              }
-
-              return (
-                <div key={v1()} className="">
-                  <Todolist
-                    changeTodoTitle={changeTodoTitle}
-                    changeTasksTitle={changeTasksTitle}
-                    removeTodoList={removeTodoList}
-                    title={t.title}
-                    filter={t.filter}
-                    tasks={tasksForTodo}
-                    removeTask={removeTask}
-                    changeFilter={changeFilter}
-                    addTask={addTask}
-                    changeTaskStatus={changeTaskStatus}
-                    todoListId={t.id}
-                  />
-                </div>
-              );
-            })}
-          </Grid>
-        </Container>
+  return(
+      <div className={`${state.theme===true?
+      style.app__darkTheme:""} ${style.app}`}>
+        <div className={style.app__container}>
+          <Sidebar
+          changeTheme={changeTheme}
+          theme={state.theme}
+           updateStep={updateStep}
+           step={state.step}/>
+          <div className={style.app__mainPart}>
+            <Header step={state.step} />
+            <div className={style.app__screenPart}>
+              {state.step===1&&<FirstScreen 
+              state={state}
+              updateAuthor={updateAuthor}
+               sendTitle={sendTitle}
+               updateStep={updateStep}
+               />}
+              {state.step===2&&<SecondScreen 
+            
+              sendText={sendText}
+              updateStep={updateStep}/>}
+              {state.step===3&&<ThirdScreen 
+            
+              updateStep={updateStep}
+              sendIsDraft={sendIsDraft}
+              isDraft={state.isDraft} 
+              theme={state.theme}/>}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   );
-}
-
-export default AppWithReducers;
+};

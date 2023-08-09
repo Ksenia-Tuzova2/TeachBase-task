@@ -1,26 +1,25 @@
-import { useContext } from "react";
-
 import { Button } from "../../../shared/button/button";
 import { Textarea } from "../../../shared/textarea/textarea";
-import { StoreContext } from "../../../store/contex";
 
 import { StateType, TextType } from "../../../store/state";
 
 import style from "./secondScreen.module.css";
 
-type SecondScreenPropsType = {};
+type SecondScreenPropsType = {
+  sendText:(text:string)=>void,
+  updateStep:(step:number)=>void
+};
 
-export const SecondScreen: React.FC<SecondScreenPropsType> = () => {
-  const { state, setState } = useContext(StoreContext);
+export const SecondScreen: React.FC<SecondScreenPropsType> = (
+  {sendText,updateStep},
+) => {
 
-  const updateTextareaValueChangeHandler = (text: TextType) => {
-    const newState = { text: text || "" } as StateType;
-    setState({ ...state, ...newState });
+  const addText = (text: TextType) => {
+    sendText(text);
   };
 
   const clickButtonHandler = () => {
-    const newState = { step: 3 } as StateType;
-    setState({ ...state, ...newState });
+    updateStep(3);
   };
 
   return (
@@ -29,10 +28,8 @@ export const SecondScreen: React.FC<SecondScreenPropsType> = () => {
         <Textarea
           textareaName={""}
           placeholder={"Введите текст статьи"}
-          textareaValueChangeHandler={(text: string) =>
-            updateTextareaValueChangeHandler(text)
-          }
-          textareaValue={state.text}
+          addText={addText}
+          
         />
       </div>
       <div className={style.secondScreen__button}>

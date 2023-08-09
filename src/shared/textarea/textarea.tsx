@@ -1,28 +1,28 @@
+import { useState } from "react";
+
 import style from "./textarea.module.css";
 
 type TextareaPropsType = {
-    textareaValue: string,
-    textareaName: string,
-    placeholder: string,
-    textareaValueChangeHandler: (text:string)=>void,
-}
-
-export const Textarea: React.FC<TextareaPropsType> = (
-    {
-        textareaValue,
-        textareaName,
-        placeholder,
-        textareaValueChangeHandler,
-    },
-) => {
-    return (
-        <textarea
-            className={style.textarea}
-            name={textareaName}
-            placeholder={placeholder}
-            value={textareaValue}
-            onChange={(e) => textareaValueChangeHandler(e.currentTarget.value)}
-        />
-    );
+  textareaName: string;
+  placeholder: string;
+  addText: (text: string) => void;
 };
 
+export const Textarea: React.FC<TextareaPropsType> = ({
+  textareaName,
+  placeholder,
+  addText,
+}) => {
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <textarea
+      onBlur={() => addText(inputValue)}
+      className={style.textarea}
+      name={textareaName}
+      placeholder={placeholder}
+      value={inputValue}
+      onChange={(e) => setInputValue(e.currentTarget.value)}
+    />
+  );
+};
